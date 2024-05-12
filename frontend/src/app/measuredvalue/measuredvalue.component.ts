@@ -20,6 +20,7 @@ export class MeasuredvalueComponent {
   doctors!: User[];
   private dataSubscription?: Subscription;
   userName: string = "";
+  error: string = "";
 
 
   constructor(private formBuilder: FormBuilder,
@@ -39,11 +40,11 @@ export class MeasuredvalueComponent {
     });
 
     this.measuredValueForm = this.formBuilder.group({
-      bloodPressure: [null, [Validators.min(0), Validators.pattern('^[0-9]^$')]],
-      pulse: [null, [Validators.min(0)]],
-      weight: [null, [Validators.min(30), Validators.max(200)]],
-      bloodSugar: [null, [Validators.min(70), Validators.max(140)]],
-      age: [null, [Validators.min(0), Validators.max(120)]],
+      bloodPressure: [null, [Validators.min(0), Validators.required]],
+      pulse: [null, [Validators.min(0), Validators.required]],
+      weight: [null, [Validators.min(30), Validators.max(200), Validators.required]],
+      bloodSugar: [null, [Validators.min(70), Validators.max(140), Validators.required]],
+      age: [null, [Validators.min(0), Validators.max(120), Validators.required]],
       doctor: ['Dr.Papp Barna'],
       from: this.userName
     });
@@ -52,7 +53,6 @@ export class MeasuredvalueComponent {
       next: (data) => {
         
         this.doctors = data;
-        console.log(this.doctors);
       }, error: (err) => {
 
         console.log(err);
@@ -64,7 +64,10 @@ export class MeasuredvalueComponent {
 
     if(!this.measuredValueForm.valid) {
 
-      console.log("Please specify valid data");
+      this.error = "Please specify valid data";
+      setTimeout(() => {
+        this.error = "";
+      }, 3000);
       return;
     }
 

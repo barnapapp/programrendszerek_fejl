@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
+  error: string = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -67,7 +68,12 @@ export class SignupComponent implements OnInit {
         }
       });
     } else {
-      console.log('Form is not valid.');
+      
+      this.error = "Form is not valid.";
+      setTimeout(() => {
+
+        this.error = "";
+      }, 3000);
     }
   }
 

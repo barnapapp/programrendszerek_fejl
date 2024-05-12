@@ -142,9 +142,9 @@ export const configureRoutes = (passport: PassportStatic, router: Router): Route
         let result: boolean = await uploadSickData(data);
 
         if(result) {
-            res.status(200).send({"ResponseText": "Sikeres adat beszuras"});
+            res.status(200).send({"ResponseText": "Data insert is successful"});
         } else {
-            res.status(500).send("Az adat beszuras sikertelen");
+            res.status(500).send({"ResponseText": "Data insert is unsuccessful"});
         }
     });
 

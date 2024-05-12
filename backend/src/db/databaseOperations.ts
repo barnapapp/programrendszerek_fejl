@@ -32,7 +32,7 @@ export const uploadSickData = async (sickData: object): Promise<boolean> => {
         return true;
     } catch(err) {
 
-        console.error("Az adat beszuras sikertelen: " + err);
+        console.error(err);
         return false;
     }
 };
@@ -46,7 +46,7 @@ export const getSickData = async (): Promise<ISickData[]> => {
         return data;
     } catch(err) {
 
-        console.error("Hiba az adatok lekerese soran: " + err);
+        console.error(err);
         return [];
     }
 };
