@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
-import { ISickData, SickData } from '../models/SickData';
-import { PartialUser, User } from '../models/User';
+import { ISickData, SickData } from '../model/SickData';
+import { PartialUser, User } from '../model/User';
 
 export const initialCollectionCheck = async (collectionExist: (mongoose.mongo.CollectionInfo | Pick<mongoose.mongo.CollectionInfo, "name" | "type">)[]): Promise<void> => {
 
     if(!(collectionExist).some(col => col.name === "users")) {
 
         const initData: PartialUser[] = [            
-            { email: "drpappbarna@gmail.com", password: "test1", name: "Dr.Papp Barna", role: "doctor"  },
-            { email: "drgipszjakab@gmail.com", password: "test2", name: "Dr.Gipsz Jakab", role: "doctor"  },
-            { email: "drhouse@gmail.com", password: "test3", name: "Dr. House", role: "doctor"  }
+            { email: "drpappbarna@gmail.com", password: "test111", name: "Dr.Papp Barna", role: "doctor"  },
+            { email: "drgipszjakab@gmail.com", password: "test222", name: "Dr.Gipsz Jakab", role: "doctor"  },
+            { email: "drhouse@gmail.com", password: "test333", name: "Dr. House", role: "doctor"  }
         ];
 
         for(const userData of initData) {
@@ -29,7 +29,6 @@ export const uploadSickData = async (sickData: object): Promise<boolean> => {
     try {
 
         const result: ISickData = await SickData.create(sickData);
-        console.log("Sikeres adat beszuras: " + result);
         return true;
     } catch(err) {
 

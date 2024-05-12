@@ -1,0 +1,16 @@
+<div class="login-container">
+    <form class="login-form" (ngSubmit)="login()">
+        <input [formControl]="email" name="email" type="email" placeholder="Email" required />
+        <input  [formControl]="password"name="password" type="password" placeholder="Password" required />
+        <div class="buttons">
+            <button type="submit">Login</button>
+        </div>
+        <div class="buttons">
+            <button type="button" (click)="navigate('/signup')">Sign Up</button>
+        </div>
+        <ng-container>
+            {{error}}
+        </ng-container>
+    </form>
+</div>
+

@@ -1,0 +1,20 @@
+<div class="measured-container">
+    <form class="measured-form" [formGroup]="measuredValueForm" (ngSubmit)="onSubmit()">
+        <input formControlName="bloodPressure" type="number" placeholder="Blood Pressure" />
+        <input formControlName="pulse" type="number" placeholder="Pulse" />
+        <input formControlName="weight" type="number" placeholder="Weight" />
+        <input formControlName="bloodSugar" type="number" placeholder="Blood Sugar" />
+        <input formControlName="age" type="number" placeholder="Age" />
+        <select formControlName="doctor">
+            <ng-container *ngFor="let element of doctors">
+                <option>{{element.name}}</option>
+            </ng-container>
+        </select>
+        <div class="buttons">
+            <button type="submit">Upload Measured Value</button>
+        </div>
+        <div class="buttons">
+            <button type="reset" (click)="logout()">Logout</button>
+        </div>
+    </form>
+</div>

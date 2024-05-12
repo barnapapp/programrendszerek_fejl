@@ -1,18 +1,16 @@
 import { PassportStatic } from 'passport';
 import { Strategy } from 'passport-local';
-import { User } from '../models/User';
+import { User } from '../model/User';
 
 export const configurePassport = (passport: PassportStatic): PassportStatic => {
 
     passport.serializeUser((user: Express.User, done) => {
-        
-        console.log("User is serialized.");
+        console.log('user is serialized.');
         done(null, user);
     });
 
     passport.deserializeUser((user: Express.User, done) => {
-
-        console.log("User is deserialized.");
+        console.log('user is deserialized.');
         done(null, user);
     });
 
@@ -23,10 +21,10 @@ export const configurePassport = (passport: PassportStatic): PassportStatic => {
             if (user) {
                 user.comparePassword(password, (error, isMatch) => {
                     if(!isMatch) {
-                        done('Incorrect username or password.');
+                        done('Incorrect username or passowrd.');
                         return;
-                    } 
-                    
+                    }
+
                     if (error) {
                         done(error);
                     } else {
@@ -42,4 +40,4 @@ export const configurePassport = (passport: PassportStatic): PassportStatic => {
     }));
 
     return passport;
-};
+}

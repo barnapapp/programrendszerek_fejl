@@ -1,0 +1,57 @@
+<div class="table-container" *ngIf="users && users.length; else noUsersTemplate">
+    <h1>Personal Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Birth Date</th>
+                <th>Birth Location</th>
+                <th>Mobile Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.email}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.birthDate}}</td>
+                <td>{{user.birthLocation}}</td>
+                <td>{{user.mobileNumber}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-container">
+    <h1>Measured Medical Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Blood Pressure</th>
+                <th>Pulse</th>
+                <th>Weight</th>
+                <th>Blood Sugar</th>
+                <th>Age</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let element of sickData">
+                <td>{{element.bloodPressure}}</td>
+                <td>{{element.pulse}}</td>
+                <td>{{element.weight}}</td>
+                <td>{{element.bloodSugar}}</td>
+                <td>{{element.age}}</td>
+                <td>{{element.from}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #noUsersTemplate>
+    <p>No users available.</p>
+</ng-template>
+
+<div class="buttons">
+    <button type="reset" (click)="logout()">Logout</button>
+</div>

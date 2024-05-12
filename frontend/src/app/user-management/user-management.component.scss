@@ -1,0 +1,38 @@
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+.table-container {
+    margin: 20px;
+    border: 1px solid white;
+    padding: 50px;
+    margin: 20px;
+    border-radius: 5%;
+    box-shadow: 10px 10px 5px whitesmoke;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(237, 100, 100);
+    width: 80%;
+    color: white;
+    padding: 10px;
+}
+
+.login-form button:hover {
+    background-color: rgb(117, 54, 54);
+}
